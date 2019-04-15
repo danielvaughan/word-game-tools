@@ -18,7 +18,21 @@ public class ScorerServiceTest {
 
     @Test
     public void given_empty_string_then_return_0() {
-        Integer actual = scorerService.score("");
-        assertThat(actual, is(equalTo(0)));
+        assertThat(scorerService.score(""), is(equalTo(0)));
+    }
+
+    @Test
+    public void given_cat_then_return_5() {
+        assertThat(scorerService.score("cat"), is(equalTo(5)));
+    }
+
+    @Test
+    public void given_pneumonoultramicroscopicsilicovolcanoconiosis_then_return_68() {
+        assertThat(scorerService.score("pneumonoultramicroscopicsilicovolcanoconiosis"), is(equalTo(68)));
+    }
+
+    @Test
+    public void given_PNEUMoNoUlTRaMIcrOSCopICSiLICoVOLCANOcONiOSIs_then_return_68() {
+        assertThat(scorerService.score("PNEUMoNoUlTRaMIcrOSCopICSiLICoVOLCANOcONiOSIs"), is(equalTo(68)));
     }
 }

@@ -35,4 +35,15 @@ public class ScorerControllerTest {
                 .andExpect(jsonPath("$", is(0)));
 
     }
+
+    @Test
+    public void given_PNEUMoNoUlTRaMIcrOSCopICSiLICoVOLCANOcONiOSIs_then_return_68() throws Exception {
+        given(mockScorerService.score("PNEUMoNoUlTRaMIcrOSCopICSiLICoVOLCANOcONiOSIs")).willReturn(68);
+
+        mockMvc.perform(get("/score?word=PNEUMoNoUlTRaMIcrOSCopICSiLICoVOLCANOcONiOSIs")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$", is(68)));
+
+    }
 }
