@@ -1,4 +1,4 @@
-package com.danielvaughan.wordgametools;
+package com.danielvaughan.wordgametools.scorer;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -12,7 +12,7 @@ public class ScorerServiceTest {
     private ScorerService scorerService;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         scorerService = new ScorerService();
     }
 

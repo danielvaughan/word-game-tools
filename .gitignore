@@ -80,3 +80,5 @@ hs_err_pid*
 /word-game-tools.iml
 /.gradle/
 /build/
+/dictionary/build/
+/scorer/build/

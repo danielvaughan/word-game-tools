@@ -1,4 +1,4 @@
-package com.danielvaughan.wordgametools;
+package com.danielvaughan.wordgametools.scorer;
 
 import org.springframework.stereotype.Service;
 

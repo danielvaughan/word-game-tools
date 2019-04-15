@@ -1,0 +1,3 @@
+rootProject.name = 'word-game-tools'
+include 'dictionary'
+include 'scorer'

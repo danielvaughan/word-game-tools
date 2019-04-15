@@ -1,4 +1,4 @@
-package com.danielvaughan.wordgametools;
+package com.danielvaughan.wordgametools.dictionary;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -6,14 +6,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-public class ScorerController {
+public class DictionaryController {
 
     @Autowired
-    private ScorerService scorerService;
+    private DictionaryService dictionaryService;
 
-    @GetMapping("/score")
-    public int score(@RequestParam("word") String word) {
-        return scorerService.score(word);
+    @GetMapping("/lookup")
+    public boolean lookup(@RequestParam("word") String word) {
+        return dictionaryService.lookup(word);
     }
-
 }

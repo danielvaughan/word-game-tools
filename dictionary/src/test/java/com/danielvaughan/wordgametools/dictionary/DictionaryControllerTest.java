@@ -1,4 +1,4 @@
-package com.danielvaughan.wordgametools;
+package com.danielvaughan.wordgametools.dictionary;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,34 +16,34 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@WebMvcTest(ScorerController.class)
-public class ScorerControllerTest {
+@WebMvcTest(DictionaryController.class)
+public class DictionaryControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @MockBean
-    private ScorerService mockScorerService;
+    private DictionaryService mockDictionaryService;
 
     @Test
-    public void given_empty_string_then_return_0() throws Exception {
-        given(mockScorerService.score("")).willReturn(0);
+    public void given_empty_string_then_return_false() throws Exception {
+        given(mockDictionaryService.lookup("")).willReturn(false);
 
-        mockMvc.perform(get("/score?word=")
+        mockMvc.perform(get("/lookup?word=")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", is(0)));
+                .andExpect(jsonPath("$", is(false)));
 
     }
 
     @Test
-    public void given_PNEUMoNoUlTRaMIcrOSCopICSiLICoVOLCANOcONiOSIs_then_return_68() throws Exception {
-        given(mockScorerService.score("PNEUMoNoUlTRaMIcrOSCopICSiLICoVOLCANOcONiOSIs")).willReturn(68);
+    public void given_cat_then_return_true() throws Exception {
+        given(mockDictionaryService.lookup("cat")).willReturn(true);
 
-        mockMvc.perform(get("/score?word=PNEUMoNoUlTRaMIcrOSCopICSiLICoVOLCANOcONiOSIs")
+        mockMvc.perform(get("/lookup?word=cat")
                 .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$", is(68)));
+                .andExpect(jsonPath("$", is(true)));
 
     }
 }
