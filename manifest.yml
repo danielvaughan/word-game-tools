@@ -1,0 +1,5 @@
+---
+applications:
+  - name: word-game-scorer
+    path: ./build/libs/word-game-tools-0.0.1-SNAPSHOT.jar
+    memory: 1GB
