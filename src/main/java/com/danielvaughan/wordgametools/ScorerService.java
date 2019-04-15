@@ -10,12 +10,12 @@ public class ScorerService {
         char[] arrayWord = upperCaseWord.toCharArray();
         int score = 0;
         for (Character letter : arrayWord) {
-            score += getValueLetter(letter);
+            score += getLetterScore(letter);
         }
         return score;
     }
 
-    private int getValueLetter(char letter) {
+    private int getLetterScore(char letter) {
         switch (letter) {
             case 'G':
             case 'D':
