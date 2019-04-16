@@ -3,6 +3,9 @@ applications:
   - name: word-game-scorer
     path: ./scorer/build/libs/scorer-0.0.1-SNAPSHOT.jar
     memory: 1GB
+    instances: 1
   - name: word-game-dictionary
     path: ./dictionary/build/libs/dictionary-0.0.1-SNAPSHOT.jar
     memory: 1GB
+    instances: 1
+services:

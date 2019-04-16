@@ -6,7 +6,8 @@ import org.springframework.stereotype.Service;
 public class DictionaryService {
 
     public boolean lookup(String word) {
-        return word.equals("cat") ? true : false;
+        boolean found = word.equals("cat") ? true : false;
+        return found;
     }
 
 }
