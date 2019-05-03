@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    run: dictionary
+  name: dictionary
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: dictionary
+  template:
+    metadata:
+      labels:
+        run: dictionary
+    spec:
+      containers:
+      - image: danielvaughan/word-game-tools-dictionary:latest
+        name: dictionary
