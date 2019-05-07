@@ -37,4 +37,9 @@ jobs:
       - run: docker build -t $DOCKER_USERNAME/$DOCKER_IMAGE_NAME:$CIRCLE_BRANCH .
 
       # deploy the image
+      - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      - run: docker push $DOCKER_USERNAME/$DOCKER_IMAGE_NAME:$CIRCLE_BRANCH
+
+      # update latest tag
+      - run: tag $DOCKER_USERNAME/$DOCKER_IMAGE_NAME:$CIRCLE_BRANCH $DOCKER_USERNAME/$DOCKER_IMAGE_NAME::latest
       - run: docker push $DOCKER_USERNAME/$DOCKER_IMAGE_NAME:$CIRCLE_BRANCH
