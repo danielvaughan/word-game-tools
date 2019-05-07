@@ -28,6 +28,17 @@ jobs:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
+      - run:
+          name:  Download cc-test-reporter
+          command: |
+            mkdir -p tmp/
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./tmp/cc-test-reporter
+            chmod +x ./tmp/cc-test-reporter
+      - persist_to_workspace:
+          root: tmp
+          paths:
+            - cc-test-reporter
+
       # run tests
       - run: gradle test
 
@@ -36,10 +47,12 @@ jobs:
       # build the image
       - run: docker build -t $DOCKER_USERNAME/$DOCKER_IMAGE_NAME:$CIRCLE_BRANCH .
 
-      # deploy the image
+      # login to docker hub
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+
+      # deploy the image
       - run: docker push $DOCKER_USERNAME/$DOCKER_IMAGE_NAME:$CIRCLE_BRANCH
 
       # update latest tag
-      - run: tag $DOCKER_USERNAME/$DOCKER_IMAGE_NAME:$CIRCLE_BRANCH $DOCKER_USERNAME/$DOCKER_IMAGE_NAME::latest
+      - run: tag $DOCKER_USERNAME/$DOCKER_IMAGE_NAME:$CIRCLE_BRANCH $DOCKER_USERNAME/$DOCKER_IMAGE_NAME:latest
       - run: docker push $DOCKER_USERNAME/$DOCKER_IMAGE_NAME:$CIRCLE_BRANCH
