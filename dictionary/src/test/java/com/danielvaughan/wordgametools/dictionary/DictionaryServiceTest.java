@@ -22,12 +22,12 @@ public class DictionaryServiceTest {
     }
 
     @Test
-    public void given_cat_then_return_true() {
-        assertThat(dictionaryService.lookup("cat"), is(equalTo(true)));
+    public void given_dog_then_return_true() {
+        assertThat(dictionaryService.lookup("dog"), is(equalTo(true)));
     }
 
     @Test
-    public void given_not_cat_then_return_false() {
-        assertThat(dictionaryService.lookup("dog"), is(equalTo(false)));
+    public void given_not_dog_then_return_false() {
+        assertThat(dictionaryService.lookup("cat"), is(equalTo(false)));
     }
 }

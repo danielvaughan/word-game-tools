@@ -9,11 +9,23 @@ spec:
   selector:
     matchLabels:
       run: dictionary
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
   template:
     metadata:
       labels:
         run: dictionary
     spec:
       containers:
-      - image: danielvaughan/word-game-tools-dictionary:latest
-        name: dictionary
+        - image: danielvaughan/word-game-tools-dictionary:latest
+          imagePullPolicy: Always
+          name: dictionary
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
