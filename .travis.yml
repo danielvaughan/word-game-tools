@@ -22,4 +22,4 @@ after_script:
   - sed -i -e 's|KUBE_ADMIN_CERT|'"${KUBE_ADMIN_CERT}"'|g' kubeconfig.yml
   - sed -i -e 's|KUBE_ADMIN_KEY|'"${KUBE_ADMIN_KEY}"'|g' kubeconfig.yml
   - sed -i -e 's|KUBE_USERNAME|'"${KUBE_USERNAME}"'|g' kubeconfig.yml
-  - docker run -v ${TRAVIS_BUILD_DIR}:/kube smesch/kubectl kubectl --kubeconfig.yml /kube/kubeconfig.yml set image deployment/${K8S_DEPLOYMENT_NAME} -n ${K8S_DEPLOYMENT_NAME} ${K8S_NAMESPACE}=${DOCKER_USERNAME}/${DOCKER_IMAGE_NAME}:$TRAVIS_BUILD_ID
+  - docker run -v ${TRAVIS_BUILD_DIR}:/kube smesch/kubectl kubectl --kubeconfig /kube/kubeconfig.yml set image deployment/${K8S_DEPLOYMENT_NAME} -n ${K8S_DEPLOYMENT_NAME} ${K8S_NAMESPACE}=${DOCKER_USERNAME}/${DOCKER_IMAGE_NAME}:$TRAVIS_BUILD_ID
