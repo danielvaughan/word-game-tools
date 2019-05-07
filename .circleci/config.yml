@@ -31,6 +31,8 @@ jobs:
       # run tests
       - run: gradle test
 
+      - setup_remote_docker
+
       # build the image
       - run: docker build -t $DOCKER_USERNAME/$DOCKER_IMAGE_NAME:$CIRCLE_BRANCH .
 
