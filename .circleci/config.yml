@@ -55,11 +55,12 @@ jobs:
   package-docker:
     docker:
       - image: circleci/openjdk:8-jdk-browsers
+
     working_directory: ~/repo
     steps:
       - checkout
-      -
-      #Docker
+
+      # setup docker
       - setup_remote_docker
 
       # build the image
