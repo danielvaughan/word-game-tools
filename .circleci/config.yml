@@ -28,5 +28,11 @@ jobs:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
-      # run tests!
+      # run tests
       - run: gradle test
+
+      # build the image
+      - run: docker build -t $DOCKER_USERNAME/$DOCKER_IMAGE_NAME:$CIRCLE_BRANCH .
+
+      # deploy the image
+      - run: docker push $DOCKER_USERNAME/$DOCKER_IMAGE_NAME:$CIRCLE_BRANCH
