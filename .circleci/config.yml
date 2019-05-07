@@ -62,7 +62,13 @@ jobs:
       - run: docker tag $DOCKER_USERNAME/$DOCKER_IMAGE_NAME:$CIRCLE_BRANCH $DOCKER_USERNAME/$DOCKER_IMAGE_NAME:latest
       - run: docker push $DOCKER_USERNAME/$DOCKER_IMAGE_NAME:$CIRCLE_BRANCH
 
-
+  deploy-GCP:
+    docker:
+      - image: circleci/openjdk:8-jdk-browsers
+    working_directory: ~/repo
+    steps:
+      - attach_workspace:
+          at: /tmp
       - run:
           name: Install gcloud SDK
           command: |
