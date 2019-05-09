@@ -66,6 +66,7 @@ jobs:
       # Upload Coverage
       - run:
           command: |
+            JACOCO_SOURCE_PATH=dictionary/src/main/jaa
             ./cc-test-reporter format-coverage ~/repo/dictionary/build/reports/jacoco/test/jacocoTestReport.xml -d -t jacoco
             ./cc-test-reporter upload-coverage -d
 
