@@ -47,4 +47,10 @@ subprojects {
                 'Source-Compatibility': project.sourceCompatibility
         )
     }
+
+    jacocoTestReport {
+        reports {
+            xml.enabled = true
+        }
+    }
 }
