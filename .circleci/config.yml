@@ -58,7 +58,7 @@ jobs:
           command: ./cc-test-reporter before-build
 
       # run tests
-      - run: gradle test
+      - run: gradle test jacocoTestReport
 
       - store_test_results:
           path: target/surefire-reports
@@ -66,7 +66,6 @@ jobs:
       # Upload Coverage
       - run:
           command: |
-            pwd
             ./cc-test-reporter format-coverage ~/repo/dictionary/build/reports/jacoco/test/jacocoTestReport.xml -d -t jacoco
             ./cc-test-reporter upload-coverage -d
 
