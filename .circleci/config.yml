@@ -46,12 +46,13 @@ jobs:
           paths:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
+
       # Setup Code Climate test-reporter
       - run:
           command: |
-            # download test reporter as a static binary
-                     curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-                     chmod +x ./cc-test-reporter
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+
       # CC Test Before
       - run:
           command: ./cc-test-reporter before-build
